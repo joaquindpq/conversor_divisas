@@ -1,0 +1,266 @@
+/* Tokens del design system "Grupo 7 ISTEA" (tema Presentación). */
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap");
+
+:root {
+    --azul: #0a2ff1;
+    --azul-hondo: #0620b0;
+    --papel: #f3f5fc;
+    --blanco: #ffffff;
+    --tinta: #0b1647;
+    --gris: #59628a;
+    --linea: #d3d9f0;
+    --senal: #ffd43b;
+    --caja-mal: #ffe9e9;
+
+    --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+
+    --margen: 64px;
+    --espacio-seccion: 22px;
+    --espacio-lista: 14px;
+    --espacio-chico: 8px;
+
+    --radio-etiqueta: 8px;
+    --radio-caja: 10px;
+    --radio-panel: 14px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 48px 20px;
+    display: flex;
+    justify-content: center;
+    background: var(--papel);
+    color: var(--tinta);
+    font-family: var(--font-display);
+    -webkit-font-smoothing: antialiased;
+}
+
+.tarjeta {
+    width: 100%;
+    max-width: 620px;
+    padding: 40px var(--margen);
+    background: var(--blanco);
+    border: 1px solid var(--linea);
+    border-radius: var(--radio-panel);
+}
+
+.logo {
+    display: block;
+    width: 110px;
+    height: auto;
+    margin: 0 auto 28px;
+}
+
+h1 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-variation-settings: "wdth" 118;
+    font-weight: 800;
+    font-size: 40px;
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+}
+
+.bajada {
+    margin: 14px 0 0;
+    font-size: 16px;
+    line-height: 1.45;
+    color: var(--gris);
+}
+
+.ruta {
+    margin: 12px 0 0;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.bandera {
+    font-size: 1.25rem;
+    vertical-align: -3px;
+}
+
+.flecha {
+    margin: 0 6px;
+    color: var(--azul);
+}
+
+.formulario {
+    margin-top: 32px;
+}
+
+label {
+    display: block;
+    margin-bottom: var(--espacio-chico);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gris);
+}
+
+.campo {
+    display: flex;
+    align-items: center;
+    background: var(--blanco);
+    border: 1.5px solid var(--linea);
+    border-radius: var(--radio-etiqueta);
+}
+
+.campo:focus-within {
+    border-color: var(--azul);
+}
+
+.simbolo {
+    padding: 0 10px 0 14px;
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--gris);
+}
+
+input {
+    flex: 1;
+    padding: 13px 14px 13px 0;
+    border: 0;
+    background: transparent;
+    color: var(--tinta);
+    font-family: inherit;
+    font-size: 19px;
+    font-variant-numeric: tabular-nums;
+}
+
+input:focus {
+    outline: none;
+}
+
+button {
+    width: 100%;
+    margin-top: 14px;
+    padding: 14px;
+    border: 0;
+    border-radius: var(--radio-etiqueta);
+    background: var(--azul);
+    color: var(--blanco);
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+button:hover {
+    background: var(--azul-hondo);
+}
+
+:focus-visible {
+    outline: 2px solid var(--senal);
+    outline-offset: 2px;
+}
+
+.error {
+    margin: 28px 0 0;
+    padding: 16px 20px;
+    background: var(--caja-mal);
+    border-radius: var(--radio-caja);
+    color: var(--tinta);
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.tabla-envoltorio {
+    margin-top: 32px;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 17px;
+    color: var(--tinta);
+    font-variant-numeric: tabular-nums;
+}
+
+th {
+    text-align: left;
+    padding: 0 16px 12px 0;
+    border-bottom: 2px solid var(--tinta);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gris);
+}
+
+td {
+    padding: 15px 16px 15px 0;
+    border-bottom: 1px solid var(--linea);
+    line-height: 1.35;
+}
+
+td:first-child {
+    font-weight: 700;
+}
+
+th.num,
+td.num {
+    text-align: right;
+    padding-right: 0;
+}
+
+.total {
+    color: var(--azul);
+    font-weight: 700;
+}
+
+.nota {
+    margin: 16px 0 0;
+    font-size: 13px;
+    color: var(--gris);
+}
+
+.pie {
+    margin-top: 32px;
+    text-align: center;
+    padding-top: 18px;
+    border-top: 1px solid var(--linea);
+}
+
+.pie a {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--espacio-chico);
+    font-size: 14px;
+    color: var(--gris);
+    text-decoration: none;
+}
+
+.pie a:hover {
+    color: var(--azul);
+    text-decoration: underline;
+}
+
+.pie svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    flex: none;
+}
+
+@media (max-width: 480px) {
+    .tarjeta {
+        padding: 28px 22px;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    .bajada {
+        font-size: 19px;
+    }
+
+    th,
+    td {
+        font-size: 15px;
+        padding-right: 10px;
+    }
+}
