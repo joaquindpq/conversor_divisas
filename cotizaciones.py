@@ -12,6 +12,9 @@ def obtener_cotizaciones() -> list[dict]:
     Returns:
         La lista de cotizaciones que devuelve la API. Cada cotización es un
         diccionario con las claves "casa", "nombre", "compra" y "venta".
+
+    Raises:
+        requests.RequestException: Si no hay conexión o la API falla.
     """
     respuesta = requests.get(URL_API, timeout=10)
     respuesta.raise_for_status()
@@ -27,6 +30,9 @@ def convertir(monto_ars: float, venta: float) -> float:
 
     Returns:
         El monto equivalente en dólares.
+
+    Raises:
+        ZeroDivisionError: Si el precio de venta es cero.
     """
     return monto_ars / venta
 
@@ -41,6 +47,10 @@ def armar_resultados(cotizaciones: list[dict], monto_ars: float) -> list[dict]:
     Returns:
         Una lista de diccionarios con el nombre de la cotización, su precio
         de compra, su precio de venta y el total convertido a dólares.
+
+    Raises:
+        ValueError: Si la API no trajo el dólar oficial y el blue.
+        KeyError: Si a una cotización le falta algún dato.
     """
     resultados = []
 
@@ -55,5 +65,8 @@ def armar_resultados(cotizaciones: list[dict], monto_ars: float) -> list[dict]:
                     "total_usd": convertir(monto_ars, venta),
                 }
             )
+
+    if len(resultados) != len(CASAS):
+        raise ValueError("La API no devolvió el dólar oficial y el blue.")
 
     return resultados
