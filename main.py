@@ -1,10 +1,11 @@
-"""Conversor de divisas.
+"""Conversor de divisas con cotización en vivo.
 
-Pide un monto en pesos argentinos y consulta la cotización del dólar en una
-API pública.
+Le pide al usuario un monto en pesos argentinos, consulta la cotización
+actual del dólar en una API pública y calcula cuántos dólares equivalen
+según el dólar oficial y el dólar blue.
 """
 
-from cotizaciones import obtener_cotizaciones
+from cotizaciones import armar_resultados, obtener_cotizaciones
 
 
 def pedir_monto() -> float:
@@ -21,11 +22,10 @@ def main() -> None:
     """Punto de entrada del programa."""
     monto = pedir_monto()
     cotizaciones = obtener_cotizaciones()
+    resultados = armar_resultados(cotizaciones, monto)
 
-    print(f"Ingresaste {monto} pesos.")
-
-    for cotizacion in cotizaciones:
-        print(cotizacion["casa"], cotizacion["venta"])
+    for resultado in resultados:
+        print(resultado["nombre"], resultado["total_usd"])
 
 
 if __name__ == "__main__":
