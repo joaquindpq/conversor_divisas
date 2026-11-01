@@ -1,7 +1,10 @@
 """Conversor de divisas.
 
-Pide un monto en pesos argentinos para después convertirlo a dólares.
+Pide un monto en pesos argentinos y consulta la cotización del dólar en una
+API pública.
 """
+
+from cotizaciones import obtener_cotizaciones
 
 
 def pedir_monto() -> float:
@@ -17,7 +20,12 @@ def pedir_monto() -> float:
 def main() -> None:
     """Punto de entrada del programa."""
     monto = pedir_monto()
+    cotizaciones = obtener_cotizaciones()
+
     print(f"Ingresaste {monto} pesos.")
+
+    for cotizacion in cotizaciones:
+        print(cotizacion["casa"], cotizacion["venta"])
 
 
 if __name__ == "__main__":
