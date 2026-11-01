@@ -25,17 +25,16 @@ consola.
 ### Ejemplo de uso
 
 ```text
-💵 Ingresá un monto en pesos argentinos (ARS): 150000
+Ingresá un monto en pesos argentinos (ARS): 150000
+Convertimos 150000.00 pesos a dólares
 
-💱 Convertimos 150000.00 pesos a dólares
-
-╒══════════════╤════════════════╤═══════════════╤═══════════════╕
-│ Cotización   │   Compra (ARS) │   Venta (ARS) │   Total (USD) │
-╞══════════════╪════════════════╪═══════════════╪═══════════════╡
-│ Oficial      │        1510.00 │       1560.00 │         96.15 │
-├──────────────┼────────────────┼───────────────┼───────────────┤
-│ Blue         │        1545.00 │       1565.00 │         95.85 │
-╘══════════════╧════════════════╧═══════════════╧═══════════════╛
++--------------+----------------+---------------+---------------+
+| Cotización   |   Compra (ARS) |   Venta (ARS) |   Total (USD) |
++==============+================+===============+===============+
+| Oficial      |        1510.00 |       1560.00 |         96.15 |
++--------------+----------------+---------------+---------------+
+| Blue         |        1545.00 |       1565.00 |         95.85 |
++--------------+----------------+---------------+---------------+
 
 El total se calcula con el precio de venta.
 ```
@@ -125,14 +124,16 @@ visual del grupo (tipografía Archivo y el azul del ISTEA).
 
 El programa avisa con un mensaje claro en lugar de cortarse cuando:
 
-- El monto no es un número → `❌ 'hola' no es un número.`
-- El monto es cero o negativo → `❌ El monto tiene que ser mayor que cero.`
-- No hay internet o la API está caída → `❌ No se pudo consultar la API: ...`
+- El monto no es un número → `Error: 'hola' no es un número.`
+- El monto es cero o negativo →
+  `Error: El monto tiene que ser mayor que cero.`
+- No hay internet o la API está caída →
+  `Error: no se pudo consultar la API: ...`
 - La API no trae el oficial y el blue →
-  `❌ La API no devolvió el dólar oficial y el blue.`
-- A la API le falta un dato → `❌ A la API le faltó el dato 'venta'.`
+  `Error: La API no devolvió el dólar oficial y el blue.`
+- A la API le falta un dato → `Error: a la API le faltó el dato 'venta'.`
 - La cotización viene en cero →
-  `❌ La cotización vino en cero, no se puede dividir.`
+  `Error: la cotización vino en cero, no se puede dividir.`
 
 ## Detalles técnicos
 
@@ -148,6 +149,8 @@ El programa avisa con un mensaje claro en lugar de cortarse cuando:
 - La versión web (`app.py`) reutiliza `cotizaciones.py` sin modificarlo: el
   HTML vive en `templates/` y los estilos en `static/`.
 - `requirements.txt` generado con `pip freeze > requirements.txt`.
+- La salida de consola usa solo caracteres ASCII en la tabla, para que
+  funcione también en la consola de Windows.
 
 ## Integrantes
 

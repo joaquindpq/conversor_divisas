@@ -25,7 +25,7 @@ def mostrar_tabla(resultados: list[dict], monto_ars: float) -> None:
 
     encabezados = ["Cotización", "Compra (ARS)", "Venta (ARS)", "Total (USD)"]
 
-    print(f"\n💱 Convertimos {monto_ars:.2f} pesos a dólares\n")
-    print(tabulate(filas, headers=encabezados, tablefmt="fancy_grid",
+    print(f"\nConvertimos {monto_ars:.2f} pesos a dólares\n")
+    print(tabulate(filas, headers=encabezados, tablefmt="grid",
                    floatfmt=".2f"))
     print("\nEl total se calcula con el precio de venta.\n")

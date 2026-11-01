@@ -27,7 +27,7 @@ def pedir_monto() -> float:
     Raises:
         ValueError: Si lo ingresado no es un número o no es mayor que cero.
     """
-    entrada = input("💵 Ingresá un monto en pesos argentinos (ARS): ")
+    entrada = input("Ingresá un monto en pesos argentinos (ARS): ")
 
     try:
         monto = float(entrada)
@@ -48,13 +48,13 @@ def main() -> None:
         resultados = armar_resultados(cotizaciones, monto)
         mostrar_tabla(resultados, monto)
     except ValueError as error:
-        print(f"❌ {error}")
+        print(f"Error: {error}")
     except requests.RequestException as error:
-        print(f"❌ No se pudo consultar la API: {error}")
+        print(f"Error: no se pudo consultar la API: {error}")
     except KeyError as error:
-        print(f"❌ A la API le faltó el dato {error}.")
+        print(f"Error: a la API le faltó el dato {error}.")
     except ZeroDivisionError:
-        print("❌ La cotización vino en cero, no se puede dividir.")
+        print("Error: la cotización vino en cero, no se puede dividir.")
 
 
 if __name__ == "__main__":
