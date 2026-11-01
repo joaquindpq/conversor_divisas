@@ -1,4 +1,4 @@
-<img src="assets/logotype-istea-fill-blue.svg" alt="ISTEA" width="170">
+<img src="static/logotype-istea-fill-blue.svg" alt="ISTEA" width="170">
 
 # Conversor de Divisas (cotización en vivo)
 
@@ -46,6 +46,9 @@ El total se calcula con el precio de venta.
   API de cotizaciones.
 - [tabulate](https://pypi.org/project/tabulate/) → imprime los resultados en
   formato de tabla.
+- [Flask](https://flask.palletsprojects.com/) → levanta el servidor de la
+  versión web. Es un agregado: el ejercicio pedía un programa de consola y
+  esa versión sigue funcionando igual.
 
 ## Estructura
 
@@ -53,10 +56,15 @@ El total se calcula con el precio de venta.
 conversor_divisas/
 ├── .venv/              # entorno virtual (NO se sube a Git)
 ├── .gitignore          # ignora .venv/ y __pycache__/
-├── assets/             # logo de la institución
-├── main.py             # punto de entrada: pide el monto y maneja errores
+├── main.py             # consola: pide el monto y maneja errores
 ├── cotizaciones.py     # módulo propio: consulta la API y convierte
 ├── vista.py            # módulo propio: muestra la tabla con tabulate
+├── app.py              # versión web con Flask (agregado)
+├── templates/
+│   └── index.html      # la página web
+├── static/
+│   ├── estilos.css     # los estilos
+│   └── logotype-istea-fill-blue.svg
 ├── requirements.txt    # dependencias congeladas con pip freeze
 └── README.md
 ```
@@ -89,12 +97,29 @@ Si preferís instalarlas a mano: `pip install requests tabulate`.
 
 ## Cómo ejecutarlo
 
+El proyecto se puede usar de dos formas.
+
+### Por consola
+
 ```bash
 python main.py
 ```
 
 Cuando te pregunte, ingresá por ejemplo `150000` y vas a ver la tabla con las
 dos cotizaciones y el total en dólares.
+
+### En el navegador
+
+```bash
+python app.py
+```
+
+Después abrí <http://127.0.0.1:5000> e ingresá el monto en el formulario.
+Para cortar el servidor, `Ctrl + C`.
+
+Las dos versiones usan el mismo módulo `cotizaciones.py`: cambia solamente
+cómo se muestra el resultado. El diseño de la página sigue la identidad
+visual del grupo (tipografía Archivo y el azul del ISTEA).
 
 ## Manejo de errores
 
@@ -120,6 +145,8 @@ El programa avisa con un mensaje claro en lugar de cortarse cuando:
   líneas de hasta 79 caracteres).
 - Código dividido en **módulos propios** (`cotizaciones.py` y `vista.py`)
   además de `main.py`.
+- La versión web (`app.py`) reutiliza `cotizaciones.py` sin modificarlo: el
+  HTML vive en `templates/` y los estilos en `static/`.
 - `requirements.txt` generado con `pip freeze > requirements.txt`.
 
 ## Integrantes
