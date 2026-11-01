@@ -1,3 +1,5 @@
+<img src="assets/logotype-istea-fill-blue.svg" alt="ISTEA" width="170">
+
 # Conversor de Divisas (cotización en vivo)
 
 Proyecto del **Ejercicio Avanzado 1** (Grupo 1, Unidad 11). Convierte un
